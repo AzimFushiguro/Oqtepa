@@ -26,6 +26,7 @@ public class MyBotServise {
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
         return sendMessage;
 
+//dasuuhdousehfoiusf
     }
     public static  SendPhoto sendPhoto(long chatId){
         SendPhoto sendPhoto = new SendPhoto();
