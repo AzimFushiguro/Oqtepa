@@ -13,14 +13,37 @@ public class MyBot extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String textMessage = update.getMessage().getText();
             Long chatId = update.getMessage().getChatId();
-            if (textMessage.equals("aaz")){
+            if (textMessage.equals("⬅\uFE0F Ortga")){
                 try {
-                    execute(myBotServise.menu(chatId));
+                    execute(myBotServise.inlineMenu(chatId));
                 } catch (TelegramApiException e) {
                     throw new RuntimeException(e);
                 }
             }
-            if (textMessage.equals("Menu")) {
+            if (textMessage.equals("Tanlash")){
+                try {
+                    execute(myBotServise.lavash(chatId));
+                } catch (TelegramApiException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (textMessage.equals("📍Geo-Lokatsiya yuboring")){
+                try {
+                    execute(myBotServise.sendLocation(chatId));
+                } catch (TelegramApiException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            if (textMessage.equals("\uD83D\uDEF5 Eltib berish")|| textMessage.equals("\uD83D\uDEB6 Borib olish")){
+                try {
+                    execute(myBotServise.BuyurtmaMenu(chatId));
+                } catch (TelegramApiException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            if (textMessage.equals("/start")) {
                 try {
                     execute(myBotServise.inlineMenu(chatId));
                 } catch (TelegramApiException e) {

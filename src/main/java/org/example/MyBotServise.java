@@ -1,5 +1,6 @@
 package org.example;
 
+import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
@@ -81,27 +82,101 @@ public class MyBotServise {
         List<KeyboardRow> rows = new ArrayList<>();
         KeyboardRow row = new KeyboardRow();
         KeyboardButton button = new KeyboardButton();
-        button.setText("Yetkazib berish");
+        button.setText("\uD83D\uDEF5 Eltib berish");
         row.add(button);
         rows.add(row);
+
+        button = new KeyboardButton();
+        row.add(button);
+        button.setText("\uD83D\uDEB6 Borib olish");
+
+        row = new KeyboardRow();
+        button =new KeyboardButton();
+        button.setText("⬅\uFE0F Ortga");
+        row.add(button);
+        rows.add(row);
+
         replyKeyboardMarkup.setResizeKeyboard(true);
         replyKeyboardMarkup.setKeyboard(rows);
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
         return sendMessage;
 
     }
-//    SendMessage sendMessage =dssqnew SendMessage();
+    public SendMessage BuyurtmaMenu(long chatId){
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(chatId);
+        sendMessage.setText("Eltib berish uchun geo-joylashuvni jo'nating yoki manzilni tanlang");
+        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+        KeyboardRow row = new KeyboardRow();
+        List<KeyboardRow>rows = new ArrayList<>();
+        KeyboardButton button = new KeyboardButton();
+        button.setText("📍Geo-Lokatsiya yuboring");
+        row.add(button);
+        rows.add(row);
 
-//        sendMessage.setChatId(chatId);
-//        sendMessage.setText("Servise");
-//    ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-//    KeyboardRow row = new KeyboardRow();
-//    List<KeyboardRow> rows = new ArrayList<>();
-//    KeyboardButton button = new KeyboardButton();
-//        button.setText("Buyurtma berish");
-//        replyKeyboardMarkup.setResizeKeyboard(true);
-//        sendMessage.setReplyMarkup(replyKeyboardMarkup);
-//        return sendMessage;
+        row  = new KeyboardRow();
+        button = new KeyboardButton();
+        button.setText("⬅\uFE0F Ortga");
+        row.add(button);
+        rows.add(row);
+
+        row  = new KeyboardRow();
+        button = new KeyboardButton();
+        button.setText("Tanlash");
+        row.add(button);
+        rows.add(row);
+
+        replyKeyboardMarkup.setResizeKeyboard(true);
+        replyKeyboardMarkup.setKeyboard(rows);
+        sendMessage.setReplyMarkup(replyKeyboardMarkup);
+        return sendMessage;
+    }
+
+    public SendMessage tanlash(long chatId){
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(chatId);
+        sendMessage.setText("Buyurtmani tanlang");
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<InlineKeyboardButton> row = new ArrayList<>();
+        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+        InlineKeyboardButton button = new InlineKeyboardButton();
+        button.setText("✅Standart");
+        button.setCallbackData("StandartId");
+        row.add(button);
+        rows.add(row);
+
+        inlineKeyboardMarkup.setKeyboard(rows);
+        sendMessage.setReplyMarkup(inlineKeyboardMarkup);
+        return sendMessage;
+
+    }
+    public SendLocation sendLocation(long chatId){
+        SendLocation sendLocation = new SendLocation();
+        sendLocation.setChatId(chatId);
+        sendLocation.setLatitude(41.222589830403756 );
+        sendLocation.setLongitude(69.222763972321);
+        return sendLocation;
+    }
+    public SendPhoto lavash(long chatId){
+        SendPhoto sendPhoto = new SendPhoto();
+        sendPhoto.setChatId(chatId);
+        sendPhoto.setPhoto(new InputFile("https://images.app.goo.gl/6s1bfGs9hPZactVj7"));
+        sendPhoto.setCaption("Sirli lavash");
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<InlineKeyboardButton> row = new ArrayList<>();
+        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+        InlineKeyboardButton button = new InlineKeyboardButton();
+        button.setText("✅Standart");
+        button.setCallbackData("StandartId");
+        row.add(button);
+        rows.add(row);
+
+        inlineKeyboardMarkup.setKeyboard(rows);
+        sendPhoto.setReplyMarkup(inlineKeyboardMarkup);
+        return sendPhoto;
+    }
+
 
 
 }
