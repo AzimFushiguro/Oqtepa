@@ -41,7 +41,7 @@ public class MyBot extends TelegramLongPollingBot {
                     execute(myBotServise.menu(chatId));
                 } catch (TelegramApiException e) {
 
-                }
+                  }
             }
         }
 
